@@ -30,7 +30,7 @@ public class Main {
         people.add(delToro);
         people.add(sutherland);
         people.add(gibson);
-        Collections.sort(people, new PersonSurnameWordsComparator());
+        Collections.sort(people, new PersonSurnameWordsComparator(2));
         System.out.println(people);
     }
 }

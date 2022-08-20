@@ -2,13 +2,11 @@ public class Person {
     private String name;
     private String surname;
     private int age;
-    protected static int surnameCompareSize;
 
     public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        surnameCompareSize = 2;
     }
 
     public void setName(String name) {
