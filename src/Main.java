@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -30,7 +31,33 @@ public class Main {
         people.add(delToro);
         people.add(sutherland);
         people.add(gibson);
-        Collections.sort(people, new PersonSurnameWordsComparator(2));
+        Comparator<Person> comparator = (Person a, Person b) -> {
+            if (a.surnameWords(a.getSurname()) >= 2
+                    && b.surnameWords(b.getSurname()) >= 2) {
+                if (a.surnameWords(a.getSurname()) >= 2
+                        && b.surnameWords(b.getSurname()) >= 2) {
+                    if (a.surnameWords(a.getSurname()) < b.surnameWords(b.getSurname())) {
+                        return -1;
+                    } else if (a.surnameWords(a.getSurname()) > b.surnameWords(b.getSurname())) {
+                        return 1;
+                    } else {
+                        if (a.getAge() > b.getAge()) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    }
+                } else {
+                    if (a.getAge() > b.getAge()) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                }
+            }
+            return 0;
+        };
+        Collections.sort(people, comparator);
         System.out.println(people);
     }
 }
